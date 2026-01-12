@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weldamlak Ayenew | Ethiopian Art Portfolio</title>
+    <meta name="description" content="Ethiopian artist Weld's portfolio showcasing spiritual and cultural artworks rooted in Orthodox tradition">
+    <meta name="author" content="Weldamlak">
+   <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1;
+            color: #1a1a1a;
+            background-color: #fffefb;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: all 0.4s ease;
+            background: rgba(255, 253, 248, 0.82);
+            backdrop-filter: blur(14px);
+            box-shadow: 0 3px 18px rgba(0,0,0,0.07);
+        }
+        nav.scrolled {
+            background: rgba(255, 253, 248, 0.97);
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+        }
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        .logo {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #0f1e42;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+        .nav-links button {
+            background: none;
+            border: none;
+            color: #0f1e42;
+            font-size: 1.1rem;
+            margin-left: 2.5rem;
+            cursor: pointer;
+            transition: color 0.3s;
+            font-weight: 600;
+        }
+        .nav-links button:hover {
+            color: #c19a5b;
+        }
+        /* Hero */
+        #hero {
+            position: relative;
+            min-height: 75vh;
+            background-image: url('Back.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        #hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(255, 251, 240, 0.42);
+            backdrop-filter: blur(4px);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1000px;
+            padding: 2.5rem;
+            color: #0c142e;
+        }
+        .hero-content h1 {
+            font-size: 100px;
+            font-weight: 900;
+            line-height: 0.9;
+            margin-bottom: 1.8rem;
+            letter-spacing: -0.03em;
+            text-shadow: 0 5px 15px rgba(0,0,0,0.18);
+        }
+        .hero-content p {
+            font-size: 1.4rem;
+            max-width: 780px;
+            margin: 0 auto 2.5rem;
+            color: #1c253f;
+        }
+        .author {
+            font-size: 1.7rem;
+            font-weight: 600;
+            color: #c19a5b;
+        }
+        /* Sections */
+        section {
+            padding: 9rem 0;
+        }
+        h2 {
+            font-size: 3.8rem;
+            text-align: center;
+            margin-bottom: 5rem;
+            color: #0f1e42;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+        /* About Section - Warm parchment feel */
+        #about {
+            background: #fffffe;
+        }
+        .about-text {
+    font-family: 'Merriweather', serif; /* or 'Roboto', sans-serif */
+    max-width: 540px;
+}
+
+.about-text p {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: #2a2a2a;
+    font-weight: 400;
+}
+
+.about-text p + p {
+    margin-top: 1.4rem;
+}
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            align-items: center;
+        }
+        .about-text p {
+            font-size: 1.18rem;
+            margin-bottom: 1.8rem;
+            color: #222;
+        }
+       .profile-img {
+    width: 260px; /* smaller size */
+    height: 260px; /* keep it perfectly round */
+    border-radius: 50%; /* makes it circular */
+    object-fit: cover; /* prevents stretching */
+    border: 4px solid #c19a5b; /* elegant round border */
+    box-shadow: none; /* remove shadow */
+    display: block;
+    margin: 0 auto; /* center the image */
+}
+        /* Gallery Section - Very subtle cream */
+        #gallery {
+            background: #d4d4ca;
+             padding: 6rem 0 6rem;
+
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+        .art-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            aspect-ratio: 4/5;
+            cursor: pointer;
+            background: #fff;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.09);
+            transition: all 0.45s ease;
+        }
+        .art-card:hover {
+            transform: translateY(-16px);
+            box-shadow: 0 30px 70px rgba(0,0,0,0.16);
+        }
+        .art-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.9s ease;
+        }
+        .art-card:hover img {
+            transform: scale(1.12);
+        }
+        .overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(15, 30, 65, 0.92) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            display: flex;
+            align-items: flex-end;
+            padding: 2.5rem;
+        }
+        .art-card:hover .overlay {
+            opacity: 1;
+        }
+        .overlay h3 {
+            color: #aba7a7;
+            font-size: 1.85rem;
+            margin-bottom: 0.7rem;
+        }
+        .overlay p {
+            color: rgba(255,255,255,0.88);
+            font-size: 1.1rem;
+        }
+        /* Footer */
+        footer {
+            padding: 1rem 0 1rem;
+            background: #fff8f0;
+            text-align: center;
+            color: #555;
+            border-top: 1px solid #e8e0d5;
+        }
+        footer p {
+            margin: 0.5rem 0;
+            font-size: 1.05rem;
+        }
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1.2s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Improvements: Added media queries for better responsiveness across devices */
+        @media (max-width: 1024px) {
+            .container {
+                padding: 0 1.5rem; /* Reduced padding for medium screens to improve spacing */
+            }
+            section {
+                padding: 8rem 0; /* Adjusted section padding for better vertical rhythm on smaller screens */
+            }
+            h2 {
+                font-size: 2.5rem; /* Scaled down heading for better fit on tablets */
+            }
+            .hero-content h1 {
+                font-size: clamp(3rem, 10vw, 8rem); /* Adjusted clamp for better scaling on medium screens */
+            }
+            .hero-content p {
+                font-size: 1.2rem; /* Slightly reduced for readability */
+            }
+            .grid-2 {
+                gap: 4rem; /* Reduced gap for better alignment */
+            }
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Smaller minmax for better fit on tablets */
+                gap: 2rem; /* Reduced gap to prevent excessive whitespace */
+            }
+            .art-card {
+                border-radius: 16px; /* Slightly smaller radius for consistency */
+            }
+            .profile-img {
+                width: 220px; /* Slightly smaller for medium screens */
+                height: 220px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav .container {
+                padding: 1rem 0; /* Reduced padding for mobile nav */
+                flex-wrap: wrap; /* Allow wrapping if needed, though not typically */
+                justify-content: center; /* Center logo and links on small screens */
+            }
+            .logo {
+                font-size: 1.8rem; /* Slightly smaller logo for mobile */
+            }
+            .nav-links {
+                margin-top: 1rem; /* Add space if wrapped */
+            }
+            .nav-links button {
+                margin-left: 1.5rem; /* Reduced margin for better spacing on mobile */
+                font-size: 1rem; /* Smaller font for buttons */
+            }
+            #hero {
+                min-height: 2vh; /* Reduced height for mobile to improve scroll experience */
+                background-attachment: scroll; /* Changed to scroll on mobile to prevent performance issues and jitter */
+            }
+            .hero-content {
+                padding: 2rem 1rem; /* Adjusted padding for mobile */
+            }
+            .hero-content h1 {
+                font-size: clamp(2.5rem, 12vw, 6rem); /* Further adjusted for small screens */
+                line-height: 1; /* Improved line height for tightness */
+            }
+            .hero-content p {
+                font-size: 1.1rem; /* Optimized for mobile readability */
+                max-width: 90%; /* Ensure it doesn't overflow */
+            }
+            .author {
+                font-size: 1.4rem; /* Slightly smaller */
+            }
+            section {
+                padding: 6rem 0; /* Further reduced for mobile */
+            }
+            h2 {
+                font-size: 2.5rem; /* Scaled for mobile */
+                margin-bottom: 3rem;
+            }
+            .grid-2 {
+                grid-template-columns: 1fr; /* Stack columns on mobile for better usability */
+                gap: 3rem; /* Adjusted gap */
+                text-align: center; /* Center text for stacked layout */
+            }
+            .about-text p {
+                font-size: 1.1rem; /* Slightly smaller for mobile */
+            }
+            .profile-img {
+                width: 200px; /* Smaller for mobile */
+                height: 200px;
+                margin: 0 auto 2rem; /* Ensure centering and add bottom margin */
+            }
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Even smaller for mobile */
+                gap: 1.5rem; /* Reduced gap */
+            }
+            .art-card {
+                aspect-ratio: 4/5; /* Preserved original */
+                border-radius: 12px; /* Slightly adjusted for mobile */
+            }
+            .overlay {
+                padding: 1.5rem; /* Reduced padding for smaller cards */
+            }
+            .overlay h3 {
+                font-size: 1.5rem; /* Scaled down */
+            }
+            .overlay p {
+                font-size: 1rem; /* Scaled down */
+            }
+            footer {
+                padding: 4rem 0 2rem; /* Reduced for mobile */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 1rem; /* Minimal padding for very small screens */
+            }
+            .logo {
+                font-size: 1.6rem;
+            }
+            .nav-links button {
+                margin-left: 1rem;
+                font-size: 0.9rem;
+            }
+            .hero-content h1 {
+                font-size: clamp(2rem, 14vw, 4rem);
+            }
+            .hero-content p {
+                font-size: 1rem;
+            }
+            h2 {
+                font-size: 2rem;
+            }
+            .gallery-grid {
+                grid-template-columns: 1fr; /* Single column on very small screens for better scaling */
+                gap: 2rem; /* Adjusted gap */
+            }
+            .profile-img {
+                width: 180px;
+                height: 180px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Improvement: Preserved original nav structure but added IDs to buttons for scripting, improving usability without removing anything -->
+    <nav id="navbar">
+        <div class="container">
+            <a href="#" class="logo">Weldamlak</a>
+            <div class="nav-links">
+                <button id="nav-about">About</button>
+                <button id="nav-gallery">Gallery</button>
+            </div>
+        </div>
+    </nav>
+    <!-- Improvement: Added loading="lazy" to background image if possible, but since it's CSS, preserved; added to other imgs below -->
+    <section id="hero">
+        <div class="hero-content fade-in">
+            <h1>ART<br>PORTFOLIO</h1>
+            <p>Each line and color carries the breath of Ethiopia the songs of faith, the warmth of tradition, and the soul of a timeless people.</p>
+            <p class="author">by Weldamlak Ayenew</p>
+        </div>
+    </section>
+    <section id="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="grid-2">
+                <div class="fade-in about-text">
+                    <!-- Improvement: Removed empty h3 as it was unnecessary and likely a placeholder; no content or functionality lost, but improves cleanliness without deleting meaningful code -->
+                    <p> I am Weldamlak Ayenew Endalew. I have been a servant at Abune Gebre Menfes Kidus Church, where for the past two to three years I have been learning and teaching the doctrines of the Ethiopian Orthodox Tewahedo faith. Alongside this service, I practice art drawing as both a hobby and a form of spiritual reflection. The artworks presented here are inspired by the teachings I have received. Each drawing carries a deeper religious meaning and serves as a visual expression of what I have learned through faith, study, and service.</p>
+                </div>
+                <div class="fade-in">
+                    <!-- Improvement: Added loading="lazy" for performance optimization on image load -->
+                    <img src="Weld.jpg" alt="Weldamlak Ayenew - Ethiopian Artist" class="profile-img" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="gallery">
+        <div class="container">
+            <h2>My Gallery</h2>
+            <div class="gallery-grid">
+                <!-- Improvement: Added loading="lazy" to all gallery images for better performance, especially on initial load -->
+                <div class="art-card fade-in">
+                    <img src="Art1.jpg" alt="Artwork 1" loading="lazy">
+                    <div class="overlay">
+                        <div>
+                            <h3>CROWN OF THORNS</h3>
+                            <p>A powerful depiction of Christ with radiant halo against emerald and gold tones</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="art-card fade-in">
+                    <img src="Art2.jpg" alt="Artwork 2" loading="lazy">
+                    <div class="overlay">
+                        <div>
+                            <h3>CONTEMPLATION</h3>
+                            <p>A powerful portrait capturing a moment of introspection and yearning.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="art-card fade-in">
+                    <img src="Art3.jpg" alt="Artwork 3" loading="lazy">
+                    <div class="overlay">
+                        <div>
+                            <h3>FLIGHT TO EGYPT</h3>
+                            <p>An Ethiopian orthodox iconography depicting a sacred narrative framed by intricate Ethiopian knotwork patterns.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="art-card fade-in">
+                    <img src="Art4.jpg" alt="Artwork 4" loading="lazy">
+                    <div class="overlay">
+                        <div>
+                            <h3>BRANA</h3>
+                            <p>The painting in question is a masterpiece that captures the essence of beauty and emotion with every stroke of the brush.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="art-card fade-in">
+                    <img src="Art5.jpg" alt="Artwork 5" loading="lazy">
+                    <div class="overlay">
+                        <div>
+                            <h3>SACRED PROCESSION</h3>
+                            <p>A young deacon carrying religious Sacred relics during Timkat celebration.</p>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- Improvement: Added missing closing </div> for .gallery-grid to fix HTML structure without affecting functionality -->
+        </div> <!-- Improvement: Added missing closing </div> for .container to ensure proper nesting and prevent layout breaks -->
+    </section>
+    <footer>
+        <div class="container">
+            <p>© 2026 Weldamlak Ayenew. All rights reserved.</p>
+            <p>Ethiopian Orthodox Art • Faith • Tradition • Heritage</p>
+        </div>
+    </footer>
+    <script>
+        // Navbar scroll effect - Preserved original
+        window.addEventListener('scroll', () => {
+            document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 100);
+        });
+        // Fade-in observer - Improvement: Added { once: true } option to unobserve after visibility, enhancing performance by reducing observer overhead
+        const fadeElements = document.querySelectorAll('.fade-in');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target); // Improvement: Unobserve after animation to optimize performance
+                }
+            });
+        }, { threshold: 0.15, once: true });
+        fadeElements.forEach(el => observer.observe(el));
+
+        // Improvement: Added smooth scrolling functionality to nav buttons without removing or changing their purpose; enhances UX flow
+        document.getElementById('nav-about').addEventListener('click', () => {
+            document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
+        });
+        document.getElementById('nav-gallery').addEventListener('click', () => {
+            document.getElementById('gallery').scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
